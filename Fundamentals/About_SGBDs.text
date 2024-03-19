@@ -1,0 +1,53 @@
+
+    SOBRE SGBDs
+
+
+SGBD é uma sigla que significa "Sistema de Gerenciamento de Banco de Dados". São softwares 
+projetados para permitir a criação, o armazenamento, a organização e a manipulação eficien-
+te de grandes quantidades de dados.
+
+Os SGBDs surgiram da necessidade de lidar com a crescente complexidade e volume de dados em 
+organizações e sistemas de informação. Antes dos SGBDs, os dados geralmente eram armazena-
+dos em arquivos de texto ou planilhas, o que tornava difícil gerenciá-los e acessá-los efi-
+cientemente. Com o surgimento dos SGBDs, tornou-se possível armazenar grandes quantidades 
+de dados de forma estruturada e segura, permitindo consultas rápidas e manipulação eficien-
+te dos dados.
+
+Hoje os SGBDs servem como uma interface entre os usuários e o banco de dados, facilitando o 
+gerenciamento dos dados de forma eficiente e segura.
+
+
+Aqui estão alguns exemplos populares de SGBDs:
+
+    * MySQL: 
+        Um SGBD relacional de código aberto amplamente utilizado, conhecido por sua confia-
+        bilidade e desempenho. É frequentemente usado em aplicativos da web e é compatível 
+        com várias plataformas. (Atualmente foi adquirido pela Oracle.)
+
+    * Oracle Database: 
+        Um dos SGBDs mais populares do mundo, desenvolvido e comercializado pela Oracle Cor-
+        poration. É conhecido por sua escalabilidade, segurança e recursos avançados.
+
+    * Microsoft SQL Server: 
+        Um SGBD relacional desenvolvido pela Microsoft, com suporte para ambientes Windows e 
+        Linux. É amplamente utilizado em organizações corporativas e oferece uma variedade 
+        de recursos, incluindo integração com outras tecnologias da Microsoft.
+
+    * PostgreSQL: 
+        Um SGBD relacional de código aberto conhecido por sua conformidade com os padrões 
+        ANSI SQL e sua extensibilidade. É altamente personalizável e é frequentemente usado 
+        em aplicativos de missão crítica. (Serviços essenciais como: saúde, governo, trans-
+        porte e etc.)
+
+    * MongoDB: 
+        Um SGBD Não Relacional, ele é projetado para armazenar dados no formato de documen-
+        tos JSON ou BSON (Binary JSON). É altamente escalável e é frequentemente usado em 
+        aplicativos modernos baseados em nuvem.
+
+    * SQLite: 
+        Um SGBD embutido de código aberto que não requer um servidor separado e é adequado 
+        para aplicativos que exigem um banco de dados leve e eficiente.
+
+
+Esses são apenas alguns exemplos de SGBDs, e há muitos outros disponíveis, cada um com suas 
+próprias características e casos de uso específicos.
