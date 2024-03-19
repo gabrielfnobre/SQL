@@ -13,8 +13,13 @@ cientemente. Com o surgimento dos SGBDs, tornou-se possível armazenar grandes q
 de dados de forma estruturada e segura, permitindo consultas rápidas e manipulação eficien-
 te dos dados.
 
-Hoje os SGBDs servem como uma interface entre os usuários e o banco de dados, facilitando o 
-gerenciamento dos dados de forma eficiente e segura.
+Antigamente, quem criasse uma aplicação que precisasse armazenar dados tinha toda a preocu-
+pação de gerar códigos de controle que armazenassem esses dados em algum arquivo, os fizes-
+se buscas, deletasse ou alterasse informações e etc.
+
+Isso tornava o desenvolvimento muito mais trabalhoso. Hoje em dia os SGBDs servem como uma 
+interface entre os usuários e o banco de dados, facilitando o gerenciamento dos dados de 
+forma eficiente e segura.
 
 
 Aqui estão alguns exemplos populares de SGBDs:

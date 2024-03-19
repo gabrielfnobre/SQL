@@ -1,7 +1,47 @@
-* O papel do SQL;
-* Modelo E/R;
-    * Entidade = Produto;
-    * Relacionamento = Como as Entidades se relacionam entre si;
-    
-* Banco Não Relacional
-    * NoSQL
+
+    SOBRE SQL
+
+
+O SQL (Structured Query Language - literalmente traduzido por: "Linguage de Busca Estruturada") 
+é uma linguagem de programação padronizada usada para gerenciar e manipular bancos de dados re-
+lacionais. 
+
+Ela permite aos usuários executar diversas operações, como inserir, atualizar, excluir e recu-
+perar dados de um banco de dados. Além disso, o SQL também é usado para definir e manipular a 
+estrutura do banco de dados, como tabelas, índices, procedimentos armazenados e muito mais.
+
+O SQL teve origem no início da década de 1970, quando pesquisadores da IBM desenvolveram a lin-
+guagem SEQUEL (Structured English Query Language). Posteriormente, foi renomeada para SQL e 
+tornou-se uma linguagem padrão amplamente adotada na indústria de bancos de dados relacionais.
+
+Vários SGBDs (Sistemas de Gerenciamento de Banco de Dados) utilizam o SQL como linguagem de 
+consulta. Alguns exemplos populares incluem:
+
+    * MySQL: 
+        Um SGBD relacional de código aberto que utiliza SQL como linguagem principal para con-
+        sulta e manipulação de dados.
+
+    * PostgreSQL: 
+        Outro SGBD relacional de código aberto que suporta SQL e oferece uma ampla gama de re-
+        cursos avançados.
+
+    * Oracle Database: 
+        Um SGBD relacional comercial que também utiliza SQL como linguagem principal.
+
+    * Microsoft SQL Server: 
+        Desenvolvido pela Microsoft, é um SGBD relacional que suporta SQL e é amplamente utili-
+        zado em ambientes corporativos.
+
+
+SOBRE BANCOS NoSQL:
+Por outro lado, os bancos de dados NoSQL (Not Only SQL) surgiram como uma alternativa aos bancos 
+de dados relacionais tradicionais. Enquanto o SQL é estruturado em torno de um modelo de dados 
+tabular (tabelas relacionais), o NoSQL abrange uma variedade de modelos de dados diferentes, in-
+cluindo documentos, chave-valor, colunas e grafos.
+
+A principal diferença entre SQL e NoSQL reside no modelo de dados que cada um suporta. Enquanto 
+o SQL é ideal para dados estruturados e relacionais, o NoSQL é mais adequado para dados semies-
+truturados ou não estruturados e cenários em que a escalabilidade e a flexibilidade são priori-
+dades. Os bancos de dados NoSQL, como MongoDB, Cassandra e Redis, não utilizam SQL como lingua-
+gem de consulta principal, optando por linguagens específicas de cada banco de dados para mani-
+pular e consultar os dados.
