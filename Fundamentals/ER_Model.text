@@ -1,0 +1,76 @@
+
+    MODELO E/R
+
+
+O Modelo Entidade-Relacionamento (ER) é uma técnica usada para projetar e representar 
+os requisitos de um sistema de banco de dados de forma visual e concisa. Ele descreve 
+as "entidades" ou "objetos" de dados dentro de um sistema, juntamente com seus rela-
+cionamentos e atributos associados. 
+
+O modelo ER é amplamente utilizado no campo da engenharia de software e banco de dados 
+para projetar esquemas de banco de dados de forma clara e compreensível.
+
+
+Principais Componentes do Modelo ER:
+
+    * Entidades: 
+        Representam objetos do mundo real ou conceitos sobre os quais desejamos arma-
+        zenar dados. Cada entidade é representada por um retângulo na diagramação ER e 
+        possui um nome exclusivo. 
+        Por exemplo, em um sistema de gerenciamento de biblioteca, podemos ter entida-
+        des como "Livro", "Autor" e "Usuário"...
+
+                     _______             _______             _________
+                    |       |           |       |           |         |
+                    | LIVRO |           | AUTOR |           | USUARIO |
+                    |_______|           |_______|           |_________|
+
+    * Atributos: 
+        São características ou propriedades das entidades. Eles descrevem informações 
+        específicas que queremos armazenar sobre cada entidade. 
+        Por exemplo, um livro pode ter atributos como "Título", "ISBN" e "Ano de Pu-
+        blicação"...
+
+                 _____________________________            ___________________ 
+                |                             |          |                   |
+                |            LIVRO            |          |       AUTOR       |
+                |_____________________________|          |___________________|
+                | TITULO | ISBN | ANO | AUTOR |          | NOME | LIVRO | ID |
+                |________|______|_____|_______|          |______|_______|____|
+
+    * Relacionamentos: 
+        Descrevem como as entidades estão relacionadas umas com as outras. Os relacio-
+        namentos são representados por linhas conectando as entidades no diagrama ER e 
+        podem ter cardinalidade (ou seja, indicar quantos objetos de um tipo estão as-
+        sociados a quantos objetos do outro tipo). 
+        Por exemplo, um livro pode estar escrito por um ou mais autores, enquanto um 
+        autor pode ter escrito um ou mais livros, uma relação Muitos para Muitos, ge-
+        ralmente os SGBDs não tem esse tipo de relação, por isso criamos uma nova ta-
+        bela com as chaves únicas de cada uma para representar esse tipo de relação.
+
+         _____________________________                         ___________________ 
+        |                             |                       |                   |
+        |            LIVRO            |                       |       AUTOR       |
+        |_____________________________|                       |___________________|
+        | TITULO | ISBN | ANO | AUTOR |                       | NOME | LIVRO | ID |
+        |________|______|_____|_______|                       |______|_______|____|
+                     |1                    _________________                   |1
+                     |____________________|                 |__________________|
+                                        N | LIVROS_AUTORES  | N
+                                          |_________________|
+                                          | ISBN | ID_AUTOR |
+                                          |______|__________|
+
+
+O Modelo ER fornece uma representação visual dos requisitos do sistema de banco de da-
+dos, permitindo que os desenvolvedores compreendam facilmente a estrutura dos dados e 
+os relacionamentos entre eles. Ele serve como uma base para a criação de esquemas de 
+banco de dados mais detalhados, como diagramas de modelo relacional, que podem ser im-
+plementados em um SGBD específico.
+
+Além disso, o modelo ER pode ser estendido com conceitos adicionais, como herança, ge-
+neralização e especialização, para lidar com requisitos mais complexos de modelagem de 
+dados. 
+
+Em suma, o Modelo Entidade-Relacionamento é uma ferramenta poderosa para projetar e 
+comunicar a estrutura de um sistema de banco de dados de forma clara e eficaz.
