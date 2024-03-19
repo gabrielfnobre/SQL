@@ -1,0 +1,85 @@
+
+    CHAVE PRIMÁRIA
+
+
+* É possível usar chaves primarias com mais uma coluna (desde os valores entre elas não se repita)
+
+Uma chave primária em um banco de dados é um conceito fundamental em modelagem de dados 
+e refere-se a um ou mais atributos que identificam de forma única cada registro em uma 
+tabela. 
+
+A chave primária garante que não haja duplicatas de registros na tabela e permite a in-
+dexação eficiente dos dados.
+
+Aqui estão algumas características importantes de uma chave primária:
+
+    * Unicidade: 
+        Cada valor na coluna da chave primária deve ser único (UNIQUE) em toda a tabela. 
+        Isso garante que cada registro na tabela seja identificado de forma exclusiva 
+        pela chave primária.
+        Lembrando que NEM TODA coluna que só aceita valores únicos é necessariamente uma 
+        coluna de chave primária.
+
+        Observações: É possível usar chaves primarias em um conjunto de colunas - desde 
+        que os valores entre elas não se repita - por exemplo:
+         ___________
+        |     PK    |  ----->  As 2 colunas compõem a chave primária
+        |___________|
+        | ID1 | ID2 | 
+        |_____|_____|
+        |  1  |  1  | ------
+        |_____|_____|      |----------> Note que apesar dos valores 
+        |  1  |  2  | ------            repetirem nas colunas, eles
+        |_____|_____|                   não repetem na mesma linha
+        |  2  |  1  |                   entre uma coluna e outra, 
+        |_____|_____|                   por isso, as duas colunas 
+        |  2  |  2  |                   em conjunto podem ser 
+        |_____|_____|                   usadas como Chave Primária.
+
+
+    * Não nulidade: 
+        Geralmente, os valores da chave primária não podem ser nulos. Isso significa 
+        que cada registro na tabela deve ter um valor válido na coluna da chave primá-
+        ria.
+
+    * Indexação (Surrogate Key - Chave Substituta): 
+        Em geral, nós desenvolvedores escolhemos chaves primárias que são indexadas 
+        pelo  próprio SGBD, que são chamadas de Surrogate Key (Chave Substitura), que 
+        nada mais  é do que um número inventado pelo próprio sistema para indexar as 
+        tuplas. 
+        Além disso, as Surrogate Key permitir acesso rápido aos registros com base na 
+        chave primária que é auto-indexada.
+
+        Observação: Até é possível usar valores do mundo real para fazer a indexação 
+        das chaves primárias, usando valores que são únicos para cada registro, como 
+        por exemplo CPF, mas geralmente isso não é muito indicado. E não é muito utili-
+        zado.
+
+    * Não pode ser modificada:
+        Em geral o valor de uma chave primária não pode ser modificada, até é possível
+        trabalhar com Chaves Primárias que possam ser modificadas, mas isso é muito
+        trabalhoso e, na grande maioria das vezes, desnecessário.
+
+
+Uso de restrições de integridade referencial: 
+Em tabelas relacionadas, você pode usar a chave primária de uma tabela como chave es-
+trangeira (Foreign Key) em outra tabela para estabelecer relacionamentos entre elas. 
+Isso é feito usando restrições de integridade referencial, garantindo que os valores na 
+chave estrangeira correspondam aos valores na chave primária da tabela relacionada.
+
+         __________________________________                   _______________________ 
+        |                                  |                 |                       |
+        |               LIVRO              |                 |          AUTOR        |
+        |__________________________________|                 |_______________________|
+        | TITULO | ISBN (PK) | ANO | AUTOR |                 | NOME | LIVRO | ID (PK)|
+        |________|___________|_____|_______|                 |______|_______|________|
+                     |1                    _________________                    |1
+                     |____________________|                 |___________________|
+                                        N | LIVROS_AUTORES  | N
+                                          |_________________|
+                                          | ISBN | ID_AUTOR |
+                                          |______|__________|
+
+
+O uso adequado de chaves primárias é essencial para garantir a integridade e a eficiên-
+cia dos dados em um banco de dados relacional.
