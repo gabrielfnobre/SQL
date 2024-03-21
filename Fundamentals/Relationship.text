@@ -1,0 +1,183 @@
+
+    RELACIONAMENTOS
+
+
+
+Em um banco de dados relacional, as tabelas estão interligadas através de relacionamentos.
+Assim como relacionamentos da vida real, as entidades (tabelas) dentro de um BD se rela-
+cionam umas com as outras. Por exemplo: Uma entidade "mãe" e uma entidade "filho", possuí
+um relacionamento onde cada "mãe" (tupla da entidade mãe) pode se relacionar com 1 ou "n" 
+(muitos) "filhos" (várias tuplas da entidade filhos).
+
+Um relacionamento é representada dos SGBDs pelas chaves estrangeiras e chaves primárias 
+entre as entidades:
+
+    * As chaves primárias: são colunas que identificam exclusivamente cada registro em uma 
+        tabela. Cada tabela geralmente tem uma chave primária.
+
+    * As chaves estrangeiras são colunas em uma tabela que estabelecem um link para a cha-
+        ve primária em outra tabela. Elas são usadas para criar relacionamentos entre ta-
+        belas.
+
+         ________________________________     ___________
+        |            LIVRO               |   |   AUTOR   |
+        |                                |   |           |
+        |___________PK_____________FK____|   |_PK________|
+        | TITULO | ISBN | ANO | AUTOR_ID |   | ID | NOME |
+        |________|______|_____|__________|   |____|______|
+                                    |           | 
+                                    |___________|
+
+           "Livro e Autor se relacionam uns com os 
+                outros pelos IDs dos autores."
+
+            OBSERVAÇÕES:
+                * Não poderá haver colunas FK em redundâncias entre 2 colunas relacionadas.
+                    Isso pode gerar um erro fatal no SGBD, fazendo com que ele não funcio-
+                    ne;
+                * Sempre escolha 1 tabela para ser a principal, por exemplo, no exemplo
+                    acima nós escolhemos a entidade "LIVRO" para ser a principal, por isso
+                    ela é quem recebe a coluna FK.
+
+
+Os relacionamentos podem ser de vários tipos:
+    
+    * Um para um (1:1): 
+        
+        Cada registro em uma tabela está associado a no máximo um registro em outra tabela.
+
+         _______________________     ___________
+        |         MARIDO        |   |  ESPOSA   |
+        |                       |   |           |
+        |_PK__________FK_UNIQUE_|   |_PK________|
+        | ID | NOME | ESPOSA_ID |   | ID | NOME |
+        |____|______|___________|   |____|______|
+                         1|           |1 
+                          |___________|
+
+           "1 marido só pode ter 1 esposa, nes- 
+            te caso o marido recebeu a chave
+            estrangeira da esposa, e na coluna
+            da FK temos uma restrição de UNIQUE
+            para mostrar que as PK recebidas 
+            não podem se repetir."
+
+
+    * Um para muitos (1:N): 
+        
+        Cada registro em uma tabela pode estar associado a vários registros em outra tabela, 
+        mas cada registro nesta última tabela está associado a no máximo um registro na pri-
+        meira tabela.
+
+         ____________________         ___________
+        |       FILHOS       |       |    MAE    |
+        |                    |       |           |
+        |_PK____________FK___|       |_PK________|
+        | ID | NOME | MAE_ID |       | ID | NOME |
+        |____|______|________|       |____|______|
+                       N|               |1 
+                        |_______________|
+
+           "1 mãe pode ter vários filhos, mas
+            um filho só pode ter 1 mãe. Neste 
+            caso o filho recebeu a chave es-
+            trangeira da mãe numa coluna FK 
+            que é non-unique, ou seja, aceita
+            duplicação, mas a própria tabela 
+            de filhos não aceita IDs duplica-
+            dos, assim como a coluna de ID 
+            das mães também não aceita dupli-
+            cação."
+
+    * Muitos para muitos (N:M): 
+    
+        Cada registro em uma tabela pode estar associado a vários registros em outra tabela, 
+        e vice-versa. Esses relacionamentos são geralmente implementados usando uma terceira 
+        tabela (Pois nos SGBDs seria impossível fazer essa representação de outra forma). 
+        Essa tabela é conhecida como tabela de associação ou tabela de junção.
+
+         ___________                          ___________
+        |   TIOS    |                        | SOBRINHOS |
+        |           |                        |           |
+        |_PK________|                        |_PK________|
+        | ID | NOME |                        | ID | NOME |
+        |____|______|                        |____|______|
+          1|          _____________________     |1 
+           |_________|     TIO_SOBRINHO    |____|
+                   N |_____________________| N
+                     |     ____PK____      |         
+                     |    |          |     |
+                     |___FK__________FK____|
+                     | ID_TIO | ID_SOBRINHO|
+                     |________|____________|
+
+           "1 tio pode ter vários sobrinhos, e 1 sobri-
+            nho pode ter vários tios. Neste caso cada
+            tio e sobrinho se mantém separadamente em
+            1 tabela, e na tabela de associação podemos
+            ter combinações de tios e sobrinhos por 
+            através de seus IDs.
+            Como as 2 colunas na tabela de associação
+            são FKs das tabelas "TIOS" e "SOBRINHOS"
+            elas em conjunto se tornarão a PK da tabela
+            TIO_SOBRINHO, ou seja, não poderá haver 
+            valores repetidos entre as linhas das colu-
+            nas."
+
+            OBSERVAÇÕES: 
+            Essa tabela poderá ter outras colunas se 
+            desejarmos.
+
+
+    Cardinalidades:
+
+As cardinalidades descrevem o número de ocorrências em um lado do relacionamento em relação 
+ao número de ocorrências no outro lado. Elas podem ser expressas em termos de mínimos e má-
+ximos.
+
+Por exemplo, em um relacionamento de 1 para muitos (1:N):
+
+    * A cardinalidade "1" indica que cada registro no lado "1" do relacionamento está asso-
+        ciado a zero ou mais registros no lado "muitos";
+                     ___              ___
+                    | A |------------| B |
+                    |___| 1        1 |___|
+
+            1 registro de A se relaciona com 1 de B.
+
+
+    * A cardinalidade "N" indica que cada registro no lado "muitos" está associado a exata-
+        mente um registro no lado "um";
+                     ___              ___
+                    | A |-|---------<| B |
+                    |___| 1        N |___|
+
+            1 registro de A se relaciona com "N" de B.
+
+
+    * Para um relacionamento muitos para muitos (N:M), a cardinalidade pode ser mais comple-
+        xa, geralmente exigindo uma tabela de junção;
+                     ___        ___        ___
+                    | A |-|---<| C |>---|-| B |
+                    |___|      |___|      |___|
+
+            "N" registros de A se relacionam com "N" de B por através de C.
+
+
+
+Formas de representar mais utilizadas:
+
+    * Podemos representar em forma numérica:
+
+         1 ----- 1  =   1 para 1;
+         1 ----- N  =   1 para muitos;
+         N ----- M  =   Muitos para muitos;
+
+    * Diagrama de pé de galinha:
+
+        -|-------|- =   1 para 1;
+        -|-------<- =   1 para muitos;
+        ->-------<- =   Muitos para muitos;
+
+Ao projetar um banco de dados, entender e definir adequadamente os relacionamentos e as car-
+dinalidades é essencial para garantir a integridade dos dados e a eficiência das consultas.
