@@ -14,6 +14,40 @@ O SQL teve origem no início da década de 1970, quando pesquisadores da IBM des
 guagem SEQUEL (Structured English Query Language). Posteriormente, foi renomeada para SQL e 
 tornou-se uma linguagem padrão amplamente adotada na indústria de bancos de dados relacionais.
 
+O SQL é dividido em 4 partes prioritárias:
+
+    * DML (Data Manipulation Language):
+        Essa parte do SQL define as regras de manipulação dos dados dentro de uma tabela SQL.
+        É nessa parte que se encontra o conceito muito conhecido de CRUD (CREATE, READ, UPDATE
+        e DELETE), que nada mais é do que os comandos de inserção, seleção, leitura, apagar e 
+        etc.
+        É nela que usamos os comando SQL como: INSERT, DELETE, SELECT, UPDATE e outros.
+
+    * DDL (Data Definition Language):
+        Essa parte define as regras de manipulação dos esquemas (schemas) ou tabelas do BD.
+        Enquando o DML se preocupa com a manipulação de dados, o DDL trabalha com toda a estru-
+        tura das tabelas.
+        Por exemplo é nela que encontramos comandos como: ALTER, CREATE e DROP, comandos que 
+        geram mudanças em toda uma tabela, sendo capazes de gerar alterações drásticas na for-
+        ma como as tabelas estão estruturadas.
+
+    * DCL (Data Control Language):
+        Essa parte define como será feito o controle dos dados em relação aos seus usuários.
+        É ela que diz quem pode fazer alterações, quem pode ver determinado esquema ou não, 
+        quem pode fazer inserções ou deletar dados.
+        Geralmente quem faz uso dessa parte são os administradores do BD, aqui usa-se comandos
+        como: GRANT (Conceder), DENY ou REVOKE.
+
+    * TCL (Transation Control Language):
+        Essa parte define comandos transacionais que precisam ser feitos em conjunto para se-
+        guir as regras de negócio da aplicação. Um bom exemplo disso são transações de banco,
+        transações de banco geralmente seguem uma série de execuções que precisam ser feitas
+        em conjunto, por exemplo, ao mesmo tempo que o dinheiro entra numa conta ele precisa
+        sair de outra e ambos usuários precisam ser notificados.
+        Os comandos do TCL servem para esse tipo de transações. Comandos geralmente usados no
+        TCL são: BEGIN TRANS, COMMIT TRANS, ROLLBACK e outros.
+
+
 Vários SGBDs (Sistemas de Gerenciamento de Banco de Dados) utilizam o SQL como linguagem de 
 consulta. Alguns exemplos populares incluem:
 
