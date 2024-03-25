@@ -1,10 +1,31 @@
-INSERT INTO estados (nome, sigla, regiao, populacao)
-VALUES ('Acre', 'AC', 'Norte', 0.83);
+-- INSERT
+
+-- Os INSERT são comando usados para inserção de dados nas colunas de uma 
+-- tabela, veja abaixo exemplos de como podemos usá-los...
+
+-- O comando INSERT INTO serve para escolher a tabela e as colunas onde os
+-- dados serão inseridos...
+INSERT INTO estados (nome, sigla, regiao, populacao) -- veja a ordem de escolha
+VALUES ('Acre', 'AC', 'Norte', 0.83); -- o comando VALUES define os valores que
+                                        -- serão inseridos, ATENÇÃO, a ordem se
+                                        -- inserção tem que ser de acordo com a
+                                        -- ordem de escolha da colunas, valores
+                                        -- passados errados poderão ser armaze-
+                                        -- nados errado, ou nem se quer aceitos
+                                        -- dependendo a regra de esquema que 
+                                        -- foi aplicada durante a criação das 
+                                        -- colunas.
 
 INSERT INTO estados (nome, sigla, regiao, populacao)
 VALUES ('Alagoas', 'AL', 'Nordeste', 3.38),
         ('Amapá', 'AP', 'Norte', 0.8),
-        ('Amazonas', 'AM', 'Norte', 4.06);
+        ('Amazonas', 'AM', 'Norte', 4.06); -- Se tivermos apenas 1 regra de in-
+                                            -- serção num arquivo "sql" não 
+                                            -- precisamos usar ";" mas se ti-
+                                            -- vermos várias regras de inserção
+                                            -- temos que usar ";" para o sql 
+                                            -- entender que são execuções dife-
+                                            -- rentes.
 
 INSERT INTO estados (nome, sigla, regiao, populacao)
 VALUES ('Bahia', 'BA', 'Nordeste', 15.34),
@@ -31,5 +52,16 @@ VALUES ('Bahia', 'BA', 'Nordeste', 15.34),
         ('Sergipe', 'SE', 'Nordeste', 2.29),
         ('Tocantions', 'TO', 'Norte', 1.55);
 
-SELECT * FROM estados;
-SELECT * FROM estados WHERE populacao = 4.06;
+SELECT * FROM estados; -- Uma consulta para ver se todos os valores foram colocados corretamente;
+SELECT * FROM estados WHERE populacao = 4.06; -- Uma consulta por um valor de população específico;
+
+SELECT * FROM estados 
+WHERE populacao = (SELECT MAX(populacao) FROM estados); -- retorna o estado com maior população;
+
+SELECT * FROM estados 
+WHERE populacao = (SELECT MIN(populacao) FROM estados); -- retorna o estado com menor população;
+
+SELECT * FROM estados 
+WHERE populacao = (SELECT MAX(populacao) FROM estados)
+OR
+populacao = (SELECT MIN(populacao) FROM estados); -- retorna os estados com menor e maior população;
