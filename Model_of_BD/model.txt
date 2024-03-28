@@ -1,14 +1,57 @@
 
- ___________                                    _____________
-|           | 1                              1 |             |
-|  ESTADOS  |------|                      |----|  PREFEITOS  |
-|___________|      |     ___________  1   |    |_____________|
-                   |----|           |-----|
-                      N |  CIDADES  | 1
- ____________           |___________|---|
-|            |                          | 
-|  EMPRESAS  |                          | N
-|____________|           _______________|____
-      |               N |                    |
-      |-----------------|  CIDADES_EMPRESAS  |
-        1               |____________________|
+  MODELO ENTIDADE RELACIONAMENTO
+
+  Aqui temos o modelo da tabela que nós criamos no MySQL em diagrama ER.
+  
+  OBSERVAÇÕES!!!
+    Quando for fazer cardinalidades entre as entidades, sempre lembre-se
+    de se perguntar: 
+      * 1 Registro dessa entidade pode ser repetido quantas vezes naquela 
+         entidade que quero relacionar? 
+         
+    Por exemplo: 1 estado pode ser repetido várias vezes na tabela cida-
+    des? Sim! Então na tabela cidade o id de estado será "N", e como a 
+    tabela estados não receberá nenhum dado de cidades sua cardinalidade
+    é "1".
+    
+    Como representar essa relação? 
+    
+    Lembre-se que PKs são sempre únicas, então sempre usamos "1" nas 
+    PKs. Já as FKs podem ser 1 ou muitas - isso depende da nossa regra 
+    de negócio - sendo assim, podemos usar  "1" ou "N" nas FKs.
+
+                                                               _____________
+ ________________________________________                     |             |
+|                                        |                    |  PREFEITOS  |
+|                ESTADOS                 |                    |             |
+|                                        |                    |_PK__________|
+|_PK___________UN______ENUM______________|                    | id |        |
+| id | nome | sigla | regiao | populacao |                    |____|________|
+|____|______|_______|________|___________|                       |1      
+  |1                                                             |_________
+  |                      ____________________________________________      |
+  |                     |                                            |     |
+  |                     |                   CIDADES                  |     |
+  |                     |                                            |     |
+  |                     |_PK_____________FK__________________FK______|     |
+  |                     | id | nome | estado_id | area | prefeito_id |     |
+  |                     |____|______|___________|______|_____________|     |
+  |                       |               |                   |            |
+  |______________        1|              N|                   |1           |
+                 |        |               |                   |____________|
+                 |        |______________ | ______
+ ____________    |________________________|       |            ______________________
+|            |                                    |           | Lembre-se que num    |
+|  EMPRESAS  |           ____________________     |           | relaciomanento N:N   |
+|            |          |                    |    |           | nós não criamos es-  |
+|_PK_________|          |  CIDADES_EMPRESAS  |    |           | se relaciomanento    | 
+| id |       |          |____________________|    |           | diretamente entre as |
+|____|_______|          |         PK         ||-- | ------->> | entidades, em vez    |
+  |                     |____FK________FK____|    |           | disso criamos uma 3ª |
+  |1                    |  emp_id  | cid_id  |    |           | tabela que receberá  |
+  |                     |__________|_________|    |           | as PKs das 2 tabelas |
+  |                           |         |         |           | como FKs nela mesma. |
+  |_________________________N_|         |_N_______|           | Essa dupla de FKs    |
+                                                              | formará a PK da 3ª   |
+                                                              | tabela.              |
+                                                              |______________________|
