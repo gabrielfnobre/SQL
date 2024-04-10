@@ -1,0 +1,90 @@
+
+    JOINS
+
+Joins são tipos de consultas que fazemos em SQL entre 2 ou mais tabelas. Elas são 
+frequentemente usadas em SQL quando desejamos saber "que registros existem entre as 
+tabelas A e B?", "Que registros só existem na tabela A que não existem na B?" e coi-
+sas do tipo.
+
+Podemos identificar esses tipos de consultas JOIN por determinadas nomeclaturas:
+
+    INNER:
+
+        As consultas do tipo INNER são consultas onde desejamos encontrar somente os
+        registros que existem nas 2 tabelas. O SQL usa as PK e as FK para encontrar
+        os registros que existem em ambas tabelas.
+
+        Podemos exemplificar um INNER da seguinte forma:
+             _____________
+            |      A      |
+            |      _______|____
+            |     |       |    |
+            |     | INNER |    |
+            |_____|_______|    |
+                  |      B     |
+                  |____________|
+
+    OUTER:
+
+        As consultas do tipo OUTER são consultas onde desejamos encontrar somente os
+        registros que NÃO existem nas 2 tabelas. O SQL usa as PK e as FK para isolar
+        os registros que possuem PK e FK entre si, e então mostram somente os regis-
+        tros que não possuem correlação entre as 2 duas tabelas.
+
+        Podemos exemplificar um OUTER da seguinte forma:
+             _____________
+            |      A      |
+            |             |
+            |    OUTER    |
+            |      _______|_____
+            |_____|_______|     |
+                  |      B      |
+                  |             |
+                  |    OUTER    |
+                  |_____________|
+
+    LEFT OUTER JOIN e RIGTH OUTER JOIN:
+
+        As consultas do tipo LEFT OUTER JOIN e RIGTH OUTER JOIN são consultas onde 
+        desejamos encontrar todos os registros de uma tabela específica de um JOIN
+        e inclusive os registros que estão relacionados por PK e FK entre as tabe-
+        las.
+        Com a diferença de que o LEFT busca os registros OUTER da primeira tabela 
+        da consulta JOIN, enquanto o RIGTH busca os registros OUTER da segunda ta-
+        bela da consulta JOIN.
+
+        Podemos exemplificar um LEFT OUTER JOIN da seguinte forma:
+             _________________
+            |        A        |
+            |                 |
+            | LEFT OUTER JOIN |
+            |      ___________|_
+            |     |           | |
+            |     | LEFT      | |
+            |     | OUTER     | |
+            |     | JOINTER   | |
+            |_____|___________| |
+                  |      B      |
+                  |_____________|
+
+        Podemos exemplificar um RIGHT OUTER JOIN da seguinte forma:
+             _________________
+            |        A        |
+            |      ___________|______
+            |     |           |      |
+            |     | RIGHT     |      |
+            |     | OUTER     |      |
+            |     | JOINTER   |      |
+            |_____|___________|      |
+                  |      B           |
+                  |                  |
+                  | RIGHT OUTER JOIN |
+                  |__________________|
+
+    FULL JOIN:
+
+        O FULL JOIN despensa apresentações, pois ele simplesmente faz uma fusão
+        total de todos os valores entre as tabelas.
+
+Essas são as formas que temos de fazer consultas do tipo JOIN entre as tabelas no
+SQL.
