@@ -37,21 +37,21 @@
   |                     | id | nome | estado_id | area | prefeito_id |     |
   |                     |____|______|___________|______|_____________|     |
   |                       |               |                   |            |
-  |______________        1|              N|                   |1           |
-                 |        |               |                   |____________|
-                 |        |______________ | ______
- ____________    |________________________|       |            ______________________
-|            |                                    |           | Lembre-se que num    |
-|  EMPRESAS  |           ____________________     |           | relaciomanento N:N   |
-|            |          |                    |    |           | nós não criamos es-  |
-|_PK_________|          |  CIDADES_EMPRESAS  |    |           | se relaciomanento    | 
-| id |       |          |____________________|    |           | diretamente entre as |
-|____|_______|          |         PK         ||-- | ------->> | entidades, em vez    |
-  |                     |____FK________FK____|    |           | disso criamos uma 3ª |
-  |1                    |  emp_id  | cid_id  |    |           | tabela que receberá  |
-  |                     |__________|_________|    |           | as PKs das 2 tabelas |
-  |                           |         |         |           | como FKs nela mesma. |
-  |_________________________N_|         |_N_______|           | Essa dupla de FKs    |
-                                                              | formará a PK da 3ª   |
-                                                              | tabela.              |
-                                                              |______________________|
+  |____________________  1|              N|                   |1           |
+                       |  |               |                   |____________|
+                       |  |______________ | __________
+ __________________    |__________________|           |       ______________________
+|                  |                                  |      | Lembre-se que num    |
+|     EMPRESAS     |     ________________________     |      | relaciomanento N:N   |
+|                  |    |                        |    |      | nós não criamos es-  |
+|_PK_______________|    |   EMPRESAS_UNIDADES    |    |      | se relaciomanento    | 
+| id | nome | cnpj |    |________________________|    |      | diretamente entre as |
+|____|______|______|    |         PK             ||-- | -->> | entidades, em vez    |
+  |                     |___FK_______FK__________|    |      | disso criamos uma 3ª |
+  |1                    | emp_id | cid_id | sede |    |      | tabela que receberá  |
+  |                     |________|________|______|    |      | as PKs das 2 tabelas |
+  |                          |         |              |      | como FKs nela mesma. |
+  |________________________N_|         |_N____________|      | Essa dupla de FKs    |
+                                                             | formará a PK da 3ª   |
+                                                             | tabela.              |
+                                                             |______________________|
