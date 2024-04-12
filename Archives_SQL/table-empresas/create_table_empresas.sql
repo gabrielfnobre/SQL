@@ -36,14 +36,18 @@ CREATE TABLE IF NOT EXISTS empresas_unidades (  -- E aqui temos a criação da t
                                                 -- os "id" nas tabelas "cidades" e "em-
                                                 -- presas", mas não fizemos isso por 
                                                 -- que essas colunas são PK na nossa 
-                                                -- tabela atual, e geralmente usar uma
-                                                -- PK como FK de outra PK em outra ta-
-                                                -- bela de forma redundante pode gerar
-                                                -- confusão e redundância no nosso ban-
-                                                -- co de dados. Essa é uma pratica evi-
-                                                -- tada. E se formos pensar bem, desne-
+                                                -- tabela atual. 
+                                                -- Usar uma ou mais colunas PK como FK 
+                                                -- de outra tabela que também usa essa
+                                                -- coluna como PK de forma redundante 
+                                                -- pode gerar confusão e problemas no 
+                                                -- nosso banco de dados. Essa é uma 
+                                                -- pratica evitada. 
+                                                -- E se formos pensar bem, é até desne-
                                                 -- cessária, visto que a unica função
                                                 -- da tabela "empresas_unidades" é re-
-                                                -- ferenciar uma relação N:M, ou seja,
-                                                -- o objetivo da tabela já está explí-
-                                                -- cito.
+                                                -- ferenciar uma relação N:M entre 2 
+                                                -- tabelas distintas, ou seja, o obje-
+                                                -- tivo da existência dessa tabela já 
+                                                -- torna explícito que essas colunas 
+                                                -- PK são FK de outras colunas.
